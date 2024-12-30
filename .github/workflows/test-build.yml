@@ -3,7 +3,17 @@
 
 name: Run Test And Build
 #push 이벤트에 대해서만 트리거 됌
-on: [push, workflow_dispatch]
+on:
+  # Trigger Event
+  push:
+    # Event Filtering
+    branches:
+      - dev
+
+  workflow_dispatch:
+    branches:
+      - dev
+
 jobs:
   #1.테스트
   test:
