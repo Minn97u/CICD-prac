@@ -1,10 +1,20 @@
+#workflow
+
+# name: 워크플로우의 이름
 name: First workflow
+# on: 언제 실행할지에 대한 조건
+# workflow_dispatch: 수동으로 실행할 수 있게 함
 on: workflow_dispatch
+# jobs: 워크플로우의 작업 목록
 jobs:
   first-jobs:
+    # runs-on: 어떤 환경에서 실행할지
     runs-on: ubuntu-latest
+    # steps: 작업의 단계
     steps:
+      # - name: 단계의 이름
       - name: Print Greeting
+        # run: 단계에서 실행할 명령어
         run: echo "Hello World!"
 
       - name: Print Goodbye
