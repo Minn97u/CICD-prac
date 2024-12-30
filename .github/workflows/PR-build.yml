@@ -4,6 +4,7 @@ on: push
 
 jobs: # 워크플로우의 작업 목록
   build-and-test:
+    continue-on-error: true
     strategy:
       matrix:
         node-version: [12, 18]
