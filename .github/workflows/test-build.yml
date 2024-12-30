@@ -1,0 +1,26 @@
+#main 브랜치에 push를 하면
+#테스트 => 빌드
+
+name: Run Test And Build
+#push 이벤트에 대해서만 트리거 됌
+on: [push, workflow_dispatch]
+jobs:
+  #1.테스트
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get Codes
+        uses: actions/checkout@v4
+#       - name: Install Dependencies
+#         run: yarn install
+#       - name: Run Tests
+#         run: yarn test
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout
+#         uses: actions/checkout@v2
+#       - name: Install Dependencies
+#         run: yarn install
+#       - name: Build
+# run: yarn build
