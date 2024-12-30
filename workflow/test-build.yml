@@ -9,10 +9,11 @@ on:
     # Event Filtering
     branches:
       - dev
+      - "feat/**"
 
   workflow_dispatch:
-    branches:
-      - dev
+    # branches:
+    #   - dev
 
 jobs:
   #1.테스트

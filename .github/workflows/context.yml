@@ -1,0 +1,9 @@
+name: Context Object
+# run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
+on: workflow_dispatch
+jobs:
+  print-context-object:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Context Object
+        run: echo "${{ toJson(github) }}"
