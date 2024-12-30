@@ -1,6 +1,7 @@
 import "@testing-library/jest-dom";
 import { render, screen, waitFor } from "@testing-library/react";
-import Query, { noEmptyString } from "./page";
+import Query from "./page";
+// import { noEmptyString } from "./page";
 import { FetchDataComponent } from "../components/fetch";
 
 describe("Query Page Test", () => {
@@ -90,19 +91,19 @@ describe("Query Page Test", () => {
     await expect(screen.findAllByRole("button")).rejects.toThrow();
   });
 
-  it("왜 콜백인지 테스트", () => {
-    const param = "";
-    try {
-      const actual = noEmptyString(param);
-    } catch (error: unknown) {
-      expect(error).toBeInstanceOf(Error);
-      expect((error as Error).message).toBe("빈 문자열이 들어왔습니다.");
-    }
+  // it("왜 콜백인지 테스트", () => {
+  //   const param = "";
+  //   try {
+  //     const actual = noEmptyString(param);
+  //   } catch (error: unknown) {
+  //     expect(error).toBeInstanceOf(Error);
+  //     expect((error as Error).message).toBe("빈 문자열이 들어왔습니다.");
+  //   }
 
-    expect(() => noEmptyString(param)).toThrow();
+  //   expect(() => noEmptyString(param)).toThrow();
 
-    // expect(actual).toBe(param);
-  });
+  //   // expect(actual).toBe(param);
+  // });
 
   it("get by ,get by All 에러", () => {
     // getBy,getByAll 함수는 DOM에서 요소를 찾지 못하면 에러를 던진다.

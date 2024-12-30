@@ -2,7 +2,7 @@
 import { NextPage } from "next";
 import { Post, Todo, useJSONPlaceholder } from "../libs/useJSONPlaceholder";
 
-export const DataFetchingComponent: NextPage = () => {
+const DataFetchingComponent: NextPage = () => {
   const { data: posts } = useJSONPlaceholder<Post>("posts/1");
   const { data: todos } = useJSONPlaceholder<Todo>("todos/1");
 
