@@ -1,3 +1,4 @@
+
 name: PR Build and Test # 워크플로우의 이름
 on: # 언제 실행할지에 대한 조건
   pull_request:
@@ -8,6 +9,7 @@ jobs: # 워크플로우의 작업 목록
   build-and-test:
     runs-on: ubuntu-latest
     steps: # 작업의 단계
+    
       - name: Checkout code
         uses: actions/checkout@v4
 
