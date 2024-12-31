@@ -27,3 +27,20 @@ jobs:
 
       - name: Build the project
         run: npm run build
+
+  create-pr:
+    needs: run-test
+    name: Create PR
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Create PR
+        uses: peter-evans/create-pull-request@v7
+        with:
+          title: "chore: create PR test"
+          body: "This is a test PR"
+          base: main
+          branch: ${{ github.ref }}
+          token: ${{ secrets.ACCESS_TOKEN_FOR_CI}}
