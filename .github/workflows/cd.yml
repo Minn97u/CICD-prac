@@ -1,0 +1,37 @@
+# CD: main 브랜치에 merge가 된 순간부터
+# 테스트 -> 배포까지의 과정을 자동화
+# 테스트: 유닛 테스트 -> 통합테스트 -> E2E 테스트 -> 배포
+# main 브랜치에 merge가 되면 유닛테스트 -> 빌드 -> 배포
+
+name: CD
+on:
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
+
+env:
+  NEXT_PUBLIC_API_URL: ${{ secrets.NEXT_PUBLIC_API_URL }}
+
+jobs:
+  if_merged:
+    name: Test,Build,Deploy
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    steps:
+      - name: Dounload Codes
+        uses: actions/checkout@v4
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Run Tests
+        run: npm run test
+
+      - name: Run Build
+        run: npm run build
+    
+      - name: Deploy
+        run: curl ${{ secrets.DEPLOY_HOOK }} 
+
